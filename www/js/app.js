@@ -1,5 +1,5 @@
-
 angular.module('FingerPrintModule', ['ionic', 'ionic.native'])
+
 .controller('MyCtrl',function ($scope, FingerPrintAuthService, $window, $cordovaToast) {
   $scope.authenticate = function () {
     var encryptConfig = {
