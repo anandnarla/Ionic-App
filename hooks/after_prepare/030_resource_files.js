@@ -17,33 +17,21 @@ var filestocopy = [{
 }, {
     "resources/android/icon/drawable-xhdpi-icon.png": "platforms/android/res/mipmap-xhdpi/icon.png"
 }, {
-    "config/android/res/drawable/splash.png": "platforms/android/res/drawable/splash.png"
+    "resources/android/splash/drawable-port-hdpi-screen.png": "platforms/android/res/drawable-port-hdpi/screen.png"
 }, {
-    "config/android/res/drawable-hdpi/splash.png": "platforms/android/res/drawable-hdpi/splash.png"
+    "resources/android/splash/drawable-port-ldpi-screen.png": "platforms/android/res/drawable-port-ldpi/screen.png"
 }, {
-    "config/android/res/drawable-ldpi/splash.png": "platforms/android/res/drawable-ldpi/splash.png"
+    "resources/android/splash/drawable-port-mdpi-screen.png": "platforms/android/res/drawable-port-mdpi/screen.png"
 }, {
-    "config/android/res/drawable-mdpi/splash.png": "platforms/android/res/drawable-mdpi/splash.png"
+    "resources/android/splash/drawable-port-xhdpi-screen.png": "platforms/android/res/drawable-port-xhdpi/screen.png"
 }, {
-    "config/android/res/drawable-xhdpi/splash.png": "platforms/android/res/drawable-xhdpi/splash.png"
+    "resources/android/splash/drawable-land-hdpi-screen.png": "platforms/android/res/drawable-land-hdpi/screen.png"
 }, {
-    "config/ios/Resources/icons/icon-72.png": "platforms/ios/YourAppName/Resources/icons/icon-72.png"
+    "resources/android/splash/drawable-land-ldpi-screen.png": "platforms/android/res/drawable-land-ldpi/screen.png"
 }, {
-    "config/ios/Resources/icons/icon.png": "platforms/ios/YourAppName/Resources/icons/icon.png"
+    "resources/android/splash/drawable-land-mdpi-screen.png": "platforms/android/res/drawable-land-mdpi/screen.png"
 }, {
-    "config/ios/Resources/icons/icon@2x.png": "platforms/ios/YourAppName/Resources/icons/icon@2x.png"
-}, {
-    "config/ios/Resources/icons/icon-72@2x.png": "platforms/ios/YourAppName/Resources/icons/icon-72@2x.png"
-}, {
-    "config/ios/Resources/splash/Default@2x~iphone.png": "platforms/ios/YourAppName/Resources/splash/Default@2x~iphone.png"
-}, {
-    "config/ios/Resources/splash/Default-568h@2x~iphone.png": "platforms/ios/YourAppName/Resources/splash/Default-568h@2x~iphone.png"
-}, {
-    "config/ios/Resources/splash/Default~iphone.png": "platforms/ios/YourAppName/Resources/splash/Default~iphone.png"
-}, {
-    "config/ios/Resources/splash/Default-Portrait~ipad.png": "platforms/ios/YourAppName/Resources/splash/Default-Portrait~ipad.png"
-}, {
-    "config/ios/Resources/splash/Default-Portrait@2x~ipad.png": "platforms/ios/YourAppName/Resources/splash/Default-Portrait@2x~ipad.png"
+    "resources/android/splash/drawable-land-xhdpi-screen.png": "platforms/android/res/drawable-land-xhdpi/screen.png"
 }, ];
 
 var fs = require('fs');
@@ -57,7 +45,7 @@ filestocopy.forEach(function(obj) {
         var val = obj[key];
         var srcfile = path.join(rootdir, key);
         var destfile = path.join(rootdir, val);
-        //console.log("copying "+srcfile+" to "+destfile);
+        // console.log("copying "+srcfile+" to "+destfile);
         var destdir = path.dirname(destfile);
         if (fs.existsSync(srcfile) && fs.existsSync(destdir)) {
             fs.createReadStream(srcfile).pipe(fs.createWriteStream(destfile));
