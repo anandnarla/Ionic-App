@@ -1,31 +1,31 @@
 angular.module('FingerPrintModule', ['ionic', 'ionic.native'])
-
-.controller('MyCtrl',function ($scope, FingerPrintAuthService, $window, $cordovaToast) {
+.run(function($ionicPlatform){
+  $ionicPlatform.registerBackButtonAction(function (event) {
+                    event.preventDefault();
+                  }, 100);
+})
+.controller('MyCtrl',function ($scope, FingerPrintAuthService, $state, $cordovaToast) {
   $scope.authenticate = function () {
     var encryptConfig = {
         clientId: "myAppName",
-        // cipherMode: 'decrypt',
         cipherMode: 'encrypt',
         username: "currentUser",
         password: "currentUserPassword",
         disableBackup:true,
-        // token:'YzMfo1k/3z8INCBtXAnULMYg/id1PwMrukb19kGlfHc=',
         userAuthRequired:false,
-        dialogTitle:'Swipe the Finger to get the details'
+        dialogTitle:'Swipe the Finger to get the insurance details'
     };
     FingerPrintAuthService.autherize(encryptConfig).then(function(result){
       console.log(JSON.stringify(result));
       if(result.withFingerprint){
-        $window.location.href = '#/authFP';
-        console.log("with fp");
+        $state.go("authFP");
       }else if (result.withBackup) {
-        $window.location.href = "#/authPwd"
-        console.log("with backup");
+        $scope.go("authPwd");
       }
     },
     function (error) {
       $cordovaToast.show(error,'long','bottom').subscribe();
       console.log(error);
-    })
+    });
   };
 });

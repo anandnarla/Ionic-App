@@ -1,1 +1,8 @@
 /* Empty. Add your own CSS if you like */
+.row-center{
+  text-align: center;
+  background-color: #cbdaf2;
+}
+.col{
+  border: 1px solid black;
+}
